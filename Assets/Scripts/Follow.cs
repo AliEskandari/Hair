@@ -13,7 +13,11 @@ public class Follow : MonoBehaviour {
 
 	void FixedUpdate() 
 	{
-		rigidbody.velocity = new Vector3 (player.transform.position.x - transform.position.x, 0.0f, player.transform.position.z - transform.position.z) * speed * Time.deltaTime;
+		Vector3 vectorToPlayer = new Vector3 (player.transform.position.x - transform.position.x, 0.0f, player.transform.position.z - transform.position.z);
+		Vector3 currentVelocity = rigidbody.velocity;
+		Vector3 finalVector = vectorToPlayer - currentVelocity;
+		Debug.Log (player.transform.position);
+		rigidbody.AddForce (finalVector * speed * Time.deltaTime);
 	}
 
 }
