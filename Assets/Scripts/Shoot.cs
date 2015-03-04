@@ -13,7 +13,7 @@ public class Shoot : MonoBehaviour {
 			clone.velocity = transform.TransformDirection(new Vector3 (0, 0, speed));
 
 			Destroy(clone.gameObject, 5);
-			audio.Play();
+			GetComponent<AudioSource>().Play();
 		}
 
 	}
