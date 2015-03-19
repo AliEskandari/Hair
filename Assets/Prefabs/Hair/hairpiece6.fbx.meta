@@ -1,27 +1,29 @@
 fileFormatVersion: 2
-guid: 569f84cf6502742e49d372d623f57cb2
+guid: 988e93e5d3ec84d75b55bdc850f2678d
+timeCreated: 1426802007
+licenseType: Free
 ModelImporter:
-  serializedVersion: 16
+  serializedVersion: 18
   fileIDToRecycleName:
     100000: Armature
-    100002: Bottom
-    100004: Bottom_end
-    100006: //RootNode
-    100008: Middle
-    100010: SketchUp
-    100012: Top
-    100014: Top_end
+    100002: Bone
+    100004: Bone.001
+    100006: Bone.001_end
+    100008: Bone.002
+    100010: Bone.003
+    100012: Cone
+    100014: //RootNode
     400000: Armature
-    400002: Bottom
-    400004: Bottom_end
-    400006: //RootNode
-    400008: Middle
-    400010: SketchUp
-    400012: Top
-    400014: Top_end
-    4300000: SketchUp
+    400002: Bone
+    400004: Bone.001
+    400006: Bone.001_end
+    400008: Bone.002
+    400010: Bone.003
+    400012: Cone
+    400014: //RootNode
+    4300000: Cone
     9500000: //RootNode
-    13700000: SketchUp
+    13700000: Cone
   materials:
     importMaterials: 1
     materialName: 0
@@ -41,7 +43,7 @@ ModelImporter:
     isReadable: 1
   meshes:
     lODScreenPercentages: []
-    globalScale: .00999999978
+    globalScale: 1
     meshCompression: 0
     addColliders: 0
     importBlendShapes: 1
@@ -49,11 +51,13 @@ ModelImporter:
     generateSecondaryUV: 0
     useFileUnits: 1
     optimizeMeshForGPU: 1
+    keepQuads: 0
     weldVertices: 1
     secondaryUVAngleDistortion: 8
     secondaryUVAreaDistortion: 15.000001
     secondaryUVHardAngle: 88
     secondaryUVPackMargin: 4
+    useFileScale: 1
   tangentSpace:
     normalSmoothAngle: 60
     splitTangentsAcrossUV: 1
@@ -76,3 +80,5 @@ ModelImporter:
   animationType: 2
   additionalBone: 0
   userData: 
+  assetBundleName: 
+  assetBundleVariant: 
