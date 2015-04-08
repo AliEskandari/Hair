@@ -3,9 +3,11 @@ using System.Collections;
 
 public class Rail : MonoBehaviour {
 
+	public float speed;
+
 	// Use this for initialization
 	void Start () {
-	
+		speed = 1;
 	}
 	
 	// Update is called once per frame
@@ -14,7 +16,16 @@ public class Rail : MonoBehaviour {
 	}
 
 	void FixedUpdate () {
+		SetTransformZ (transform.position.z + (1.0f * speed * Time.deltaTime));
+	}
 
-//		transform.position.z = 1;
+	void SetTransformX(float n)
+	{
+		transform.position = new Vector3(n, transform.position.y, transform.position.z);
+	}
+	
+	void SetTransformZ(float n)
+	{
+		transform.position = new Vector3(transform.position.x, transform.position.y, n);
 	}
 }
