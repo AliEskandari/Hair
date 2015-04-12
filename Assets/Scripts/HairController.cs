@@ -21,7 +21,6 @@ public class HairController : MonoBehaviour {
 
 		// Create and place each strand of hair.
 		for (int i = 0; i < numHairs; i++) {
-			Debug.Log ("here");
 			float angle = (((float) i) / numHairs * hairAngle) - (hairAngle / 2);
 			Vector3 p = HairCamera.gameObject.transform.position;
 			Vector3 hairPosition = new Vector3(p.x + hairRadius * Mathf.Sin(angle), p.y/2, p.z + hairRadius * Mathf.Cos(angle));
