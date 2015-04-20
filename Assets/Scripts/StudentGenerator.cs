@@ -4,8 +4,8 @@ using System.Collections.Generic;
 
 public class StudentGenerator : MonoBehaviour {
 
-	public GameObject stub;
-	public float range;
+	public GameObject student;
+	public float numberOfStudents;
 	public int count;
 	public float width;
 	
@@ -42,12 +42,12 @@ public class StudentGenerator : MonoBehaviour {
 
 
 	GameObject getRandomPosGameObjectAtLevel (int level) {
-		GameObject g = GameObject.CreatePrimitive(PrimitiveType.Cube);
+		GameObject g = Instantiate (student);
 
 		g.transform.position = new Vector3 
 				((Random.Range(-1, 1) < 0 ? -1 : 1) * width,
-				 1,
-				 transform.position.z + (level * range) +  Random.Range(1, range));
+				 student.transform.position.y,
+				 transform.position.z + (level * numberOfStudents) +  Random.Range(1, numberOfStudents));
 
 		return g;
 	}
