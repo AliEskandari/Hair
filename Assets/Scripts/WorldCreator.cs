@@ -7,7 +7,7 @@ public class WorldCreator : MonoBehaviour {
 	enum Direction {North, East, South, West};
 
 	private readonly float turn_probability = 0.3f;
-	private readonly int levelsize = 40;
+	private readonly int levelsize = 80;
 	private readonly int numdisplayed = 10;
 
 	public GameObject hallwayPrefab;

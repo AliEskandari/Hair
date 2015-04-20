@@ -37,11 +37,6 @@ public class MyPath {
 		return new Vector3 (x, y, z);
 	}
 
-	// Returns the total length of the path
-	public float GetTotalDistance() {
-		return totalDistance;
-	}
-
 	// Returns the start index of the path segment containing the given distance
 	public int GetIndexAtDistance(float distance) {
 		if (distance < 0.001) {
@@ -63,6 +58,11 @@ public class MyPath {
 		}
 
 		return -1;
+	}
+	
+	// Returns the total length of the path
+	public float GetTotalDistance() {
+		return totalDistance;
 	}
 
 	private void InitPathLength() {
