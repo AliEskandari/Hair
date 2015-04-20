@@ -10,24 +10,38 @@ public class WorldCreator : MonoBehaviour {
 	private readonly int levelsize = 80;
 	private readonly int numdisplayed = 10;
 
-	public GameObject hallwayPrefab;
-	public GameObject leftCornerPrefab;
-	public GameObject rightCornerPrefab;
+	private List<GameObject> hallwayPrefabs;
+	private List<GameObject> leftCornerPrefabs;
+	private List<GameObject> rightCornerPrefabs;
 
 	private List<GameObject> rooms;
 
 	public OnRailsCameraController cameraController;
+	
+	private readonly string hallwayTag = "Hallway";
+	private readonly string leftCornerTag = "Left Corner";
+	private readonly string rightCornerTag = "Right Corner";
 
-	private readonly string hallwayName = "StraightHallway";
-	private readonly string leftCornerName = "LeftCorner";
-	private readonly string rightCornerName = "RightCorner";
 	
 	private Direction lastStartDir = Direction.North;
-
 
 	// Use this for initialization
 	void Start () {
 		rooms = new List<GameObject> ();
+		hallwayPrefabs = new List<GameObject>();
+		leftCornerPrefabs = new List<GameObject>();
+		rightCornerPrefabs = new List<GameObject>();
+
+		foreach (Object o in Resources.LoadAll("Rooms")) {
+			GameObject b = o as GameObject;
+			if (isHallway(b)) {
+				hallwayPrefabs.Add(b);
+			} else if (isLeftCorner(b)) {
+				leftCornerPrefabs.Add(b);
+			} else if (isRightCorner(b)) {
+				rightCornerPrefabs.Add(b);
+			}
+		}
 
 		PopulateRooms ();
 	}
@@ -91,7 +105,15 @@ public class WorldCreator : MonoBehaviour {
 	// if turnleft == true -> the corner will turn to the left
 	// if turnleft != true -> the corner will turn to the right
 	GameObject GenerateCorner(Direction startDir, Vector3 startPos, bool turnleft) {
-		GameObject prefab = turnleft ? leftCornerPrefab : rightCornerPrefab;
+		GameObject prefab;
+		if (turnleft) {
+			int index = (int) Mathf.Floor (Random.value * leftCornerPrefabs.Count);
+			prefab = leftCornerPrefabs[index];
+		} else {
+			int index = (int) Mathf.Floor (Random.value * rightCornerPrefabs.Count);
+			prefab = rightCornerPrefabs[index];
+		}
+
 		GameObject corner = Instantiate(prefab, new Vector3(0,0,0), Quaternion.identity) as GameObject;
 		
 		translateAndRotate (corner, startDir, startPos);
@@ -103,7 +125,10 @@ public class WorldCreator : MonoBehaviour {
 	// startDir = the direction of the most recent room's exit
 	// startPos = the position of the most recent room's endpoint
 	GameObject GenerateHallway(Direction startDir, Vector3 startPos) {
-		GameObject hallway = Instantiate(hallwayPrefab, new Vector3(0,0,0), Quaternion.identity) as GameObject;
+		int index = (int) Mathf.Floor (Random.value * hallwayPrefabs.Count);
+		GameObject prefab = hallwayPrefabs[index];
+
+		GameObject hallway = Instantiate(prefab, new Vector3(0,0,0), Quaternion.identity) as GameObject;
 		
 		translateAndRotate (hallway, startDir, startPos);
 		
@@ -139,10 +164,10 @@ public class WorldCreator : MonoBehaviour {
 		float diffx = e.x - s.x;
 		float diffz = e.z - s.z;
 		
-		if (o.name.Contains(hallwayName)) {
+		if (isHallway(o)) {
 			return start;
 		} else {
-			return Turn (start, o.name.Contains(leftCornerName));
+			return Turn (start, isLeftCorner(o));
 		}
 	}
 	
@@ -171,4 +196,17 @@ public class WorldCreator : MonoBehaviour {
 
 		return pathPoints;
 	}
+
+	private bool isHallway(GameObject o) {
+		return (o.tag == hallwayTag);
+	}
+
+	private bool isLeftCorner(GameObject o) {
+		return (o.tag == leftCornerTag);
+	}
+
+	private bool isRightCorner(GameObject o) {
+		return (o.tag == rightCornerTag);
+	}
+
 }
