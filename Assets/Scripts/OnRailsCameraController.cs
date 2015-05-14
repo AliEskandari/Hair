@@ -11,7 +11,7 @@ public class OnRailsCameraController : MonoBehaviour {
 
 	public WorldCreator worldCreator;
 
-	private readonly float speed = 0;
+	private readonly float speed = 1;
 	private readonly float amountToLookAhead = 3;
 
 	private SortedDictionary<int, int> pathIndexToRoom;

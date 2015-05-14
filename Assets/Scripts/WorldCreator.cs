@@ -69,12 +69,23 @@ public class WorldCreator : MonoBehaviour {
 	void PopulateRooms() {
 		int hallwayCounter = 0;
 		int cornerCounter = 0;
+
 		for (int i = 0; i < levelsize; i++) {
 			// Add the first hallway
 			if (i == 0) {
 				rooms.Add (GenerateHallway (lastStartDir, new Vector3 (0, 0, 0)));
 				hallwayCounter++;
 				continue;
+			}
+
+			int visibleRightCorners = 0;
+			int visibleLeftCorners = 0;
+			for (int roomIndex = Mathf.Max(rooms.Count - numdisplayed, 0); roomIndex < rooms.Count; roomIndex++) {
+				if (isRightCorner(rooms[roomIndex])) {
+					visibleRightCorners++;
+				} else if (isLeftCorner(rooms[roomIndex])) {
+					visibleLeftCorners++;
+				}
 			}
 
 			// Get information about the previous room added
@@ -84,18 +95,14 @@ public class WorldCreator : MonoBehaviour {
 			lastStartDir = lastDir;
 
 			GameObject room;
-			if (hallwayCounter > 3) {
-				hallwayCounter = 0;
-				cornerCounter = 1;
-				room = GenerateCorner (lastDir, lastPos, Random.value < 0.5);
-			} else if (cornerCounter >= 1) {
-				cornerCounter = 0;
-				hallwayCounter = 1;
-				room = GenerateHallway (lastDir, lastPos);
-			} else {
-				room = GenerateNext (lastDir, lastPos);
-			}
+			bool hallwayPossible = !(hallwayCounter >= 4);
+			bool leftCornerPossible = !(cornerCounter >= 1) && (visibleLeftCorners - visibleRightCorners < 2);
+			bool rightCornerPossible = !(cornerCounter >= 1) && (visibleRightCorners - visibleLeftCorners < 2);
 
+			room = GenerateNext(lastDir, lastPos, rightCornerPossible, leftCornerPossible, hallwayPossible);
+
+			hallwayCounter = isHallway(room) ? hallwayCounter + 1 : 0;
+			cornerCounter = isLeftCorner(room) || isRightCorner(room) ? cornerCounter + 1 : 0;
 
 			if (i > numdisplayed) {
 				room.SetActive (false);
@@ -108,14 +115,27 @@ public class WorldCreator : MonoBehaviour {
 	// Instantiate a new room that is positioned and rotated to attach to previous room
 	// position = the position of the most recent room's endpoint
 	// d = the direction of the most recent room's exit
-	GameObject GenerateNext(Direction d, Vector3 position) {
-		bool shouldturn = Random.value < turn_probability;
+	// Randomly decides if next room will be right corner, left corner or straight hallway
+	// these can be limited with the right possible, left possible, and straight possible options
+	GameObject GenerateNext(Direction d, Vector3 position, bool rightPossible, bool leftPossible, bool straightPossible) {
 
-		if (shouldturn) {
-			return GenerateCorner (d, position, Random.value < 0.5);
-		} else {
+		if (!rightPossible && !straightPossible && !leftPossible) {
+			Debug.Log ("IT BROKE");
+			return null;
+		} else if (!rightPossible && !leftPossible) {
+			return GenerateHallway (d, position);
+		} else if (straightPossible && Random.value < (1 - turn_probability)) {
 			return GenerateHallway (d, position);
 		}
+
+		bool turnleft = Random.value < 0.5;
+		if (!rightPossible) {
+			turnleft = true;
+		} else if (!leftPossible) {
+			turnleft = false;
+		}
+
+		return GenerateCorner (d, position, turnleft);
 	}
 	
 	// Generate a corner
