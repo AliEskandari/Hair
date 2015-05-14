@@ -11,7 +11,7 @@ public class OnRailsCameraController : MonoBehaviour {
 
 	public WorldCreator worldCreator;
 
-	private readonly float speed = 15;
+	private readonly float speed = 0;
 	private readonly float amountToLookAhead = 3;
 
 	private SortedDictionary<int, int> pathIndexToRoom;
@@ -75,5 +75,13 @@ public class OnRailsCameraController : MonoBehaviour {
 		pathIndexToRoom.TryGetValue(path.GetIndexAtDistance (distance), out v);
 
 		return v;
+	}
+
+	public MyPath getPath() {
+		return path;
+	}
+
+	public SortedDictionary<int, int> getPathToRoomIndices() {
+		return pathIndexToRoom;
 	}
 }

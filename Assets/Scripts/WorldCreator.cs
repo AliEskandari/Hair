@@ -8,7 +8,7 @@ public class WorldCreator : MonoBehaviour {
 
 	private readonly float turn_probability = 0.3f;
 	private readonly int levelsize = 80;
-	private readonly int numdisplayed = 10;
+	private readonly int numdisplayed = 6;
 
 	private List<GameObject> hallwayPrefabs;
 	private List<GameObject> leftCornerPrefabs;
@@ -17,6 +17,8 @@ public class WorldCreator : MonoBehaviour {
 	private List<GameObject> rooms;
 
 	public OnRailsCameraController cameraController;
+	public StudentGenerator studentGenerator;
+	public GameObject hallwaysObject;
 	
 	private readonly string hallwayTag = "Hallway";
 	private readonly string leftCornerTag = "Left Corner";
@@ -44,6 +46,9 @@ public class WorldCreator : MonoBehaviour {
 		}
 
 		PopulateRooms ();
+		
+		cameraController.RoomsAdded (rooms);
+		studentGenerator.addStudents (cameraController.getPath (), cameraController.getPathToRoomIndices());
 	}
 
 	void Update() {
@@ -56,15 +61,19 @@ public class WorldCreator : MonoBehaviour {
 		for (int i = 0; i < rooms.Count; i++) {
 			bool shouldDisplay = (i >= min && i <= max);
 			rooms[i].SetActive(shouldDisplay);
+			studentGenerator.changeStudentVisibility(i, shouldDisplay);
 		}
 	}
 
 	// Add one new room and delete the oldest room each time this is called
 	void PopulateRooms() {
+		int hallwayCounter = 0;
+		int cornerCounter = 0;
 		for (int i = 0; i < levelsize; i++) {
 			// Add the first hallway
 			if (i == 0) {
 				rooms.Add (GenerateHallway (lastStartDir, new Vector3 (0, 0, 0)));
+				hallwayCounter++;
 				continue;
 			}
 
@@ -74,7 +83,19 @@ public class WorldCreator : MonoBehaviour {
 			Direction lastDir = getExitDir (last, lastStartDir);
 			lastStartDir = lastDir;
 
-			GameObject room = GenerateNext (lastDir, lastPos);
+			GameObject room;
+			if (hallwayCounter > 3) {
+				hallwayCounter = 0;
+				cornerCounter = 1;
+				room = GenerateCorner (lastDir, lastPos, Random.value < 0.5);
+			} else if (cornerCounter >= 1) {
+				cornerCounter = 0;
+				hallwayCounter = 1;
+				room = GenerateHallway (lastDir, lastPos);
+			} else {
+				room = GenerateNext (lastDir, lastPos);
+			}
+
 
 			if (i > numdisplayed) {
 				room.SetActive (false);
@@ -82,8 +103,6 @@ public class WorldCreator : MonoBehaviour {
 
 			rooms.Add (room);
 		}
-
-		cameraController.RoomsAdded (rooms);
 	}
 
 	// Instantiate a new room that is positioned and rotated to attach to previous room
@@ -115,7 +134,7 @@ public class WorldCreator : MonoBehaviour {
 		}
 
 		GameObject corner = Instantiate(prefab, new Vector3(0,0,0), Quaternion.identity) as GameObject;
-		
+		corner.transform.parent = hallwaysObject.transform;
 		translateAndRotate (corner, startDir, startPos);
 		
 		return corner;
@@ -129,7 +148,7 @@ public class WorldCreator : MonoBehaviour {
 		GameObject prefab = hallwayPrefabs[index];
 
 		GameObject hallway = Instantiate(prefab, new Vector3(0,0,0), Quaternion.identity) as GameObject;
-		
+		hallway.transform.parent = hallwaysObject.transform;
 		translateAndRotate (hallway, startDir, startPos);
 		
 		return hallway;

@@ -39,7 +39,7 @@ public class MyPath {
 
 	// Returns the start index of the path segment containing the given distance
 	public int GetIndexAtDistance(float distance) {
-		if (distance < 0.001) {
+		if (distances == null || distances.Length == 0 || distance < 0.001) {
 			return 0;
 		}
 
@@ -58,6 +58,10 @@ public class MyPath {
 		}
 
 		return -1;
+	}
+
+	public Vector3 GetPoint(int index) {
+		return path [index];
 	}
 	
 	// Returns the total length of the path
