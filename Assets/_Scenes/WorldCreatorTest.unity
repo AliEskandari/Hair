@@ -260,25 +260,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 4
---- !u!1 &351312390 stripped
-GameObject:
-  m_PrefabParentObject: {fileID: 111724, guid: 573762215700b48fb89e6b15effc2537, type: 2}
-  m_PrefabInternal: {fileID: 1660605782}
---- !u!54 &351312395
-Rigidbody:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 351312390}
-  serializedVersion: 2
-  m_Mass: 1
-  m_Drag: 0
-  m_AngularDrag: .0500000007
-  m_UseGravity: 0
-  m_IsKinematic: 0
-  m_Interpolate: 0
-  m_Constraints: 0
-  m_CollisionDetection: 0
 --- !u!1001 &400786618
 Prefab:
   m_ObjectHideFlags: 0
@@ -1090,25 +1071,6 @@ Prefab:
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 573762215700b48fb89e6b15effc2537, type: 2}
   m_IsPrefabParent: 0
---- !u!1 &1675321115 stripped
-GameObject:
-  m_PrefabParentObject: {fileID: 111724, guid: 573762215700b48fb89e6b15effc2537, type: 2}
-  m_PrefabInternal: {fileID: 266963541}
---- !u!54 &1675321117
-Rigidbody:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1675321115}
-  serializedVersion: 2
-  m_Mass: 1
-  m_Drag: 0
-  m_AngularDrag: .0500000007
-  m_UseGravity: 0
-  m_IsKinematic: 0
-  m_Interpolate: 0
-  m_Constraints: 0
-  m_CollisionDetection: 0
 --- !u!1 &1703890728
 GameObject:
   m_ObjectHideFlags: 0
@@ -1177,22 +1139,3 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 41f1ef401a41540e89d24694967cbcb0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!1 &2058392992 stripped
-GameObject:
-  m_PrefabParentObject: {fileID: 111724, guid: 573762215700b48fb89e6b15effc2537, type: 2}
-  m_PrefabInternal: {fileID: 400786618}
---- !u!54 &2058392994
-Rigidbody:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 2058392992}
-  serializedVersion: 2
-  m_Mass: 1
-  m_Drag: 0
-  m_AngularDrag: .0500000007
-  m_UseGravity: 0
-  m_IsKinematic: 0
-  m_Interpolate: 0
-  m_Constraints: 0
-  m_CollisionDetection: 0
