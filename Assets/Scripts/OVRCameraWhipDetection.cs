@@ -2,18 +2,23 @@
 using System.Collections;
 using System;
 
+/*
+ * Attach this script to an object that can be used to track the players head movements.
+ * For OVR, the LeftEyeAnchor or RightEyeAnchor in the OVRCameraRig should be used.
+ */
+
 public class OVRCameraWhipDetection : MonoBehaviour {
 
-	public float minUpTime;
-	public float minUpAcc;
-	public float maxDownTime;
-	public float stopVel;
-	public float minYVel;
-
-	private bool detected;
-
+	public float minUpTime = 0.08f;
+	public float minUpAcc = 2.0f;
+	public float maxDownTime = 0.4f;
+	public float stopVel = 0.05f;
+	public float minYVel = 0.0f;
+	
 	private float currUpTime;
 	private float currDownTime;
+
+	private bool detected;
 
 	private Camera cam;
 	private Vector3 camVelCopy;
@@ -23,30 +28,22 @@ public class OVRCameraWhipDetection : MonoBehaviour {
 	private float prevVelMag;
 	private float currAcc;
 
-	private float deltaTime;
+	public float deltaTime = 0.06f;
 	private float timer;
 
-	
 
 	// Use this for initialization
 	void Start () {
 
 		cam 				= GetComponent<Camera> ();
 		camVelCopy 			= new Vector3 ();
-
-		minUpTime 			= 0.08f;
-		minUpAcc 			= 2.0f;
-		maxDownTime 		= 0.4f;
-		stopVel 			= 0.05f;
-		minYVel 			= 0.1f;
-
+		 						
 		currUpTime 			= 0f;
 		currDownTime 		= 0f;
 
 		currYVel 			= 0f;
 		currVelMag 			= 0f;
-
-		deltaTime 			= 0.06f;
+					
 		timer 				= 0.0f;
 
 	}
@@ -88,6 +85,7 @@ public class OVRCameraWhipDetection : MonoBehaviour {
 
 		// if current acceleration meets up acceleration req...
 		if (currAcc >= minUpAcc && currYVel >= minYVel) {
+			Debug.Log("Checkpoint 1");
 			setDetected (true);
 
 			// potential whip started, time the build up
@@ -98,6 +96,7 @@ public class OVRCameraWhipDetection : MonoBehaviour {
 
 			// if build is long enough...
 			if (currUpTime >= minUpTime) {
+				Debug.Log("Checkpoint 2");
 
 				// time deacceleration to stopVel...
 				while (currVelMag >= stopVel) {
