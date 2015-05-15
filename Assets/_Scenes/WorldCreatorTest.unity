@@ -563,6 +563,7 @@ GameObject:
   m_Component:
   - 4: {fileID: 596621737}
   - 114: {fileID: 596621736}
+  - 114: {fileID: 596621738}
   m_Layer: 0
   m_Name: WorldCreator
   m_TagString: Untagged
@@ -582,7 +583,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cameraController: {fileID: 1703890730}
-  studentGenerator: {fileID: 1703890729}
+  studentGenerator: {fileID: 596621738}
   hallwaysObject: {fileID: 334094218}
 --- !u!4 &596621737
 Transform:
@@ -596,6 +597,19 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 4
+--- !u!114 &596621738
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 596621735}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 530f24bb26d164ba2ada6cf91a1d29e6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  student: {fileID: 137388, guid: 6b25d8bd33cf64f6d9c985982f6eaf36, type: 2}
+  studentsObject: {fileID: 591700746}
 --- !u!1 &672289648
 GameObject:
   m_ObjectHideFlags: 0
@@ -1219,7 +1233,7 @@ MonoBehaviour:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1703890728}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 530f24bb26d164ba2ada6cf91a1d29e6, type: 3}
   m_Name: 
