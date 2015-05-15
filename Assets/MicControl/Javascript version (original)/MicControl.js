@@ -26,7 +26,7 @@ static var loudness:float;
 var sensitivity:float=0.4;
 var sourceVolume:float=100;
 private var minFreq: int;
-var maxFreq: int=44100;
+ var maxFreq: int=44100;
  
 @HideInInspector
 var Mute:boolean=true;
@@ -93,10 +93,10 @@ function Update() {
     if (ThreeD) {
         ListenerDistance = Vector3.Distance(transform.position, audioListener.position);
         ListenerPosition = audioListener.InverseTransformPoint(transform.position);
-        audioSource.volume = (sourceVolume / 100 / (ListenerDistance * VolumeFallOff));
-        audioSource.panStereo = (ListenerPosition.x / PanThreshold);
+        GetComponent. < AudioSource > ().volume = (sourceVolume / 100 / (ListenerDistance * VolumeFallOff));
+        GetComponent. < AudioSource > ().panStereo = (ListenerPosition.x / PanThreshold);
     } else {
-        audioSource.volume = (sourceVolume / 100);
+        GetComponent. < AudioSource > ().volume = (sourceVolume / 100);
     }
 }
 
@@ -104,7 +104,7 @@ function GetDataStream() {
     if (Microphone.IsRecording(selectedDevice)) {
         var dataStream: float[] = new float[amountSamples];
         var audioValue: float = 0;
-        audioSource.GetOutputData(dataStream, 0);
+        GetComponent. < AudioSource > ().GetOutputData(dataStream, 0);
         for (var i in dataStream) {
             audioValue += Mathf.Abs(i);
         }
@@ -198,11 +198,11 @@ function InitMic() {
             }
         }
         //detect the selected microphone
-        audioSource.clip = Microphone.Start(selectedDevice, true, 10, maxFreq);
+        GetComponent. < AudioSource > ().clip = Microphone.Start(selectedDevice, true, 10, maxFreq);
         //loop the playing of the recording so it will be realtime
-        audioSource.loop = true;
+        GetComponent. < AudioSource > ().loop = true;
         //if you only need the data stream values  check Mute, if you want to hear yourself ingame don't check Mute. 
-        audioSource.mute = Mute;
+        GetComponent. < AudioSource > ().mute = Mute;
         //don't do anything until the microphone started up
         while (!(Microphone.GetPosition(selectedDevice) > 0)) {
             if (debug) {
@@ -213,7 +213,7 @@ function InitMic() {
             Debug.Log("Connected");
         }
         //Put the clip on play so the data stream gets ingame on realtime
-        audioSource.Play();
+        GetComponent. < AudioSource > ().Play();
         recording = true;
     }
 }
@@ -221,13 +221,13 @@ function InitMic() {
 //for the above control the mic start or stop
 public
 function StartMicrophone() {
-    audioSource.clip = Microphone.Start(selectedDevice, true, 10, maxFreq); //Starts recording
+    GetComponent. < AudioSource > ().clip = Microphone.Start(selectedDevice, true, 10, maxFreq); //Starts recording
     while (!(Microphone.GetPosition(selectedDevice) > 0)) {} // Wait until the recording has started
-    audioSource.Play(); // Play the audio source!
+    GetComponent. < AudioSource > ().Play(); // Play the audio source!
 }
 public
 function StopMicrophone() {
-    audioSource.Stop(); //Stops the audio
+    GetComponent. < AudioSource > ().Stop(); //Stops the audio
     Microphone.End(selectedDevice); //Stops the recording of the device  
 }
 

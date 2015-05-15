@@ -31,7 +31,7 @@ public class GameRunner : MonoBehaviour {
 	private float startRotation;
 	// Update is called once per frame
 	void Update () {
-		if (OVRManager.capiHmd.GetHSWDisplayState ().Displayed) {
+		if (OVRManager.isHSWDisplayed) {
 			return;
 		} else if (gamestate == State.menu && !title.activeInHierarchy) {
 			title.SetActive(true);

@@ -15,6 +15,10 @@ public class OVRCameraWhipDetection : MonoBehaviour {
 	public float stopVel = 0.05f;
 	public float minYVel = 0.0f;
 	
+	public bool whipped { get; set; }
+
+	public PlayerController playerController;
+	
 	private float currUpTime;
 	private float currDownTime;
 
@@ -107,6 +111,7 @@ public class OVRCameraWhipDetection : MonoBehaviour {
 				// if deacceleration was fast enough...
 				if (currDownTime <= maxDownTime) {
 					Debug.Log("WHIPPED");
+					playerController.whipped();
 				}
 			}
 		}
@@ -114,5 +119,5 @@ public class OVRCameraWhipDetection : MonoBehaviour {
 		setDetected (false);
 		resetTimes ();
 	}
-	
+
 }
