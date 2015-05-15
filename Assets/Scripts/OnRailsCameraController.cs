@@ -8,11 +8,13 @@ public class OnRailsCameraController : MonoBehaviour {
 	public GameObject railCamera;
 	private bool pathcreated = false;
 	private float distance;
+	private float startDist = 5f;
 
 	public WorldCreator worldCreator;
 
-	private readonly float speed = 3;
+	private readonly float MAX_SPEED = 2;
 	private readonly float amountToLookAhead = 3;
+	private float speed = 0;
 
 	private SortedDictionary<int, int> pathIndexToRoom;
 
@@ -53,8 +55,9 @@ public class OnRailsCameraController : MonoBehaviour {
 			Vector3[] temp = worldCreator.GetPathPoints (rooms [roomIndex]);
 
 			if (roomIndex == 0) {
+				p.Add(new Vector3(temp[0].x, temp[0].y, temp[0].z - startDist));
+				pathIndexToRoom.Add (p.Count, 0);
 				p.Add(temp[0]);
-				pathIndexToRoom.Add (0, 0);
 			}
 
 			for (int pathIndex = 1; pathIndex < temp.Length; pathIndex++) {
@@ -83,5 +86,9 @@ public class OnRailsCameraController : MonoBehaviour {
 
 	public SortedDictionary<int, int> getPathToRoomIndices() {
 		return pathIndexToRoom;
+	}
+
+	public void startMoving() {
+		speed = MAX_SPEED;
 	}
 }

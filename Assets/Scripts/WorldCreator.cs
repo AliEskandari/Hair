@@ -19,6 +19,9 @@ public class WorldCreator : MonoBehaviour {
 	public OnRailsCameraController cameraController;
 	public StudentGenerator studentGenerator;
 	public GameObject hallwaysObject;
+	public GameRunner gameRunner;
+
+	private bool started = false;
 	
 	private readonly string hallwayTag = "Hallway";
 	private readonly string leftCornerTag = "Left Corner";
@@ -48,10 +51,19 @@ public class WorldCreator : MonoBehaviour {
 		PopulateRooms ();
 		
 		cameraController.RoomsAdded (rooms);
-		studentGenerator.addStudents (cameraController.getPath (), cameraController.getPathToRoomIndices());
 	}
 
 	void Update() {
+		if (gameRunner.getGameState () == GameRunner.State.menu) {
+			return;
+		}
+
+		if (gameRunner.getGameState () == GameRunner.State.playing && started == false) {
+			started = true;
+			cameraController.startMoving();
+		}
+
+		studentGenerator.addStudents (cameraController.getPath (), cameraController.getPathToRoomIndices());
 
 		// Deactivate rooms not in view
 		int index = cameraController.GetRoomIndex ();
@@ -104,11 +116,12 @@ public class WorldCreator : MonoBehaviour {
 			hallwayCounter = isHallway(room) ? hallwayCounter + 1 : 0;
 			cornerCounter = isLeftCorner(room) || isRightCorner(room) ? cornerCounter + 1 : 0;
 
-			if (i > numdisplayed) {
-				room.SetActive (false);
-			}
 
 			rooms.Add (room);
+		}
+
+		foreach (GameObject room in rooms) {
+			room.SetActive(false);
 		}
 	}
 

@@ -15,8 +15,6 @@ public class StudentGenerator : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
 		created = new Dictionary<float, GameObject> ();
-
-
 	}
 	
 	// Update is called once per frame
@@ -35,7 +33,7 @@ public class StudentGenerator : MonoBehaviour {
 		studentLocations = new float[numStudents];
 		studentRooms = new Dictionary<int, List<int>> ();
 		for (int studentIndex = 0; studentIndex < numStudents; studentIndex ++) {
-			float studentDist = 0.1f + studentIndex * distance * 0.8f / numStudents;
+			float studentDist = 9f + studentIndex * distance * 0.9f / numStudents;
 			studentLocations[studentIndex] = studentDist;
 			int room = pathToRoomIndex[path.GetIndexAtDistance(studentDist)];
 			if (!studentRooms.ContainsKey(room)) {
