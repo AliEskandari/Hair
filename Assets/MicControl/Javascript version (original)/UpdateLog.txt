@@ -1,0 +1,74 @@
+All these updates (unless stated otherwise) describe the changes in the Javascript version. All changes to the C# version will be noted in the update text. 
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------
+2.2.1(bugfix):
+(C# updates are on hold for the time being.)
+
+Updates:
+Moved C# version to the new "community" folder.
+
+Bugfixes:
+-Fixed small bug in the microphone initialisation process. The bug would go unoticed most of the times. Fixed 
+ made possible thanks to Vinicius Bruno.
+
+2.2:
+
+Updates:
+-Added UpdateLog to "MicControl\Javascript version (original)"
+-Removed update list from the ReadMe file.
+-Added panning to simulate full 3D sound (only works when mute is off. This affects the left and right speakers.
+-updated ReadMe file (Javascript version).
+-Changed tooltip explanation.
+-Tweaked the data lag prevention. You will experience 
+-Created new example scene. This scene uses the microphone to stream audio from an object in space and adjust its scale based on the loudness.
+
+
+Bugfixes:
+-fixed bug in the 3D fallof.
+-fixed crash when calling the 'loudness' value in standalone mode (only happened very rarely).
+-Loudness value would not print to the console if debug is enabled.
+
+2.1.1: hotfix
+This is the hotfix for the C# code, all scripts should work properly now.
+
+2.1:
+
+Updates: 
+C#related updates
+-djfunkey has provided previous updates into the C# version, lets all thank him for that.
+
+Bugfixes:
+UnityScript and C# related fixes
+-Finally fixed the microphone lag after pausing/holding the game or app. This should make using the MicController a lot more fun and efficient. Now you can finally
+ pause your game without data lag!!
+
+
+2.0:
+-Added 3D sound effect, based on listener distance.
+-New inspector interface with tooltips.
+-Added new tutorial guiding through the new features.
+-Edited UnityScript manual with the new variables and corresponding descriptions.
+-fixed bug that caused Unity to crash.
+-New example scene.
+
+1.2.5.1(hotfix):
+
+Uploaded with correct unity version.
+
+1.2.5
+
+-WebPlayer support for the JavaScript version
+-video tutorial webplayer
+-Chanced folder names
+-Fixed nasty bug that crashed WebPlayers
+
+
+
+1.2.4
+Updates: -Webplayer support: The script now recognize the webplayer and will catch the mic for autorization. When autorization is released, the mic will be initialized.
+
+
+1.2.3
+Updates: -Fixed audio bar (editor script) to visualize the Mic Input in the inspector (while ingame).
+		 -Fixed memory leak and call bugs.
+		 -Cleaned up Readme file: divided into chapters.
+		 -Video tutorial added.

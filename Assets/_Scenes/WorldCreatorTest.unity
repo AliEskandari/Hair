@@ -501,7 +501,8 @@ Prefab:
       propertyPath: useProfileHeight
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 11400000, guid: ce816f2e6abb0504092c23ed9b970dfd, type: 2}
   m_ParentPrefab: {fileID: 100100000, guid: ce816f2e6abb0504092c23ed9b970dfd, type: 2}
   m_IsPrefabParent: 0
 --- !u!4 &562747161 stripped
@@ -682,36 +683,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 1
---- !u!1 &707277599 stripped
-GameObject:
-  m_PrefabParentObject: {fileID: 100008, guid: ce816f2e6abb0504092c23ed9b970dfd, type: 2}
-  m_PrefabInternal: {fileID: 562747160}
---- !u!114 &707277600
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 707277599}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 530f24bb26d164ba2ada6cf91a1d29e6, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  student: {fileID: 137388, guid: 6b25d8bd33cf64f6d9c985982f6eaf36, type: 2}
-  studentsObject: {fileID: 0}
---- !u!114 &707277601
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 707277599}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a68d87eb326b1469b9b1ca1c429c4347, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  railCamera: {fileID: 1425184715}
-  worldCreator: {fileID: 596621736}
 --- !u!4 &707277606 stripped
 Transform:
   m_PrefabParentObject: {fileID: 400006, guid: ce816f2e6abb0504092c23ed9b970dfd, type: 2}
@@ -1127,6 +1098,8 @@ GameObject:
   - 114: {fileID: 1703890729}
   - 114: {fileID: 1703890730}
   - 114: {fileID: 1703890732}
+  - 82: {fileID: 1703890734}
+  - 114: {fileID: 1703890733}
   m_Layer: 0
   m_Name: RailBody
   m_TagString: Untagged
@@ -1179,8 +1152,102 @@ MonoBehaviour:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1703890728}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 41f1ef401a41540e89d24694967cbcb0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &1703890733
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1703890728}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d9fc313776e7ca746b9f8c4b800d4ce7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  SelectIngame: 0
+  ThreeD: 0
+  VolumeFallOff: 1
+  PanThreshold: 1
+  InputDevice: 0
+  audioListener: {fileID: 0}
+  audioSource: {fileID: 0}
+  amountSamples: 256
+  sensitivity: .400000006
+  sourceVolume: 100
+  maxFreq: 44100
+  Mute: 1
+  debug: 0
+  ShowDeviceName: 0
+--- !u!82 &1703890734
+AudioSource:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1703890728}
+  m_Enabled: 0
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 0}
+  m_PlayOnAwake: 1
+  m_Volume: 1
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    - time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
