@@ -17,7 +17,8 @@ public class OVRCameraWhipDetection : MonoBehaviour {
 	
 	public bool whipped { get; set; }
 
-	public PlayerController playerController;
+	private PlayerController playerController;
+	public GameObject railbody;
 	
 	private float currUpTime;
 	private float currDownTime;
@@ -50,6 +51,8 @@ public class OVRCameraWhipDetection : MonoBehaviour {
 					
 		timer 				= 0.0f;
 
+		playerController = railbody.GetComponent<PlayerController> ();
+
 	}
 	
 	// Update is called once per frame, FixedDeltaTime = .02 seconds
@@ -57,13 +60,15 @@ public class OVRCameraWhipDetection : MonoBehaviour {
 
 		if (timer >= deltaTime) {
 
-			camVelCopy.x 	= cam.velocity.x;
-			camVelCopy.y 	= cam.velocity.z;
+			camVelCopy.x 	= cam.velocity.x - railbody.GetComponent<Velocity>().velocity.x;
+			camVelCopy.z 	= cam.velocity.z - railbody.GetComponent<Velocity>().velocity.z;
 			
 			currYVel 		= cam.velocity.y;
 			currVelMag 		= camVelCopy.magnitude;
 			currAcc 		= Mathf.Abs((currVelMag - prevVelMag) / deltaTime);
 			prevVelMag 		= currVelMag;
+
+			Debug.Log(cam.velocity.ToString() + ", " +  railbody.GetComponent<Velocity>().velocity.ToString());
 
 			if (!detected) {
 				StartCoroutine (WhipDetect (ResetWhipTimesCallback, SetWhipDetectedCallback));

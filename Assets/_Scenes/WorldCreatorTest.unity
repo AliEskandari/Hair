@@ -585,7 +585,7 @@ MonoBehaviour:
   maxDownTime: .400000006
   stopVel: .0500000007
   minYVel: 0
-  railbody: {fileID: 0}
+  railbody: {fileID: 1703890728}
   deltaTime: .0599999987
 --- !u!1 &200440538
 GameObject:
@@ -1019,7 +1019,7 @@ MonoBehaviour:
   RotationRatchet: 45
   HmdRotatesY: 1
   GravityModifier: 1
-  useProfileHeight: 1
+  useProfileHeight: 0
 --- !u!114 &562342586
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2592,7 +2592,7 @@ GameObject:
   - 114: {fileID: 1703890733}
   - 114: {fileID: 1703890735}
   - 114: {fileID: 1703890732}
-  - 54: {fileID: 1703890736}
+  - 114: {fileID: 1703890736}
   m_Layer: 0
   m_Name: RailBody
   m_TagString: Untagged
@@ -2645,7 +2645,7 @@ MonoBehaviour:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1703890728}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 5546353099665499498cbcc59984aa12, type: 3}
   m_Name: 
@@ -2657,7 +2657,7 @@ MonoBehaviour:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1703890728}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: d9fc313776e7ca746b9f8c4b800d4ce7, type: 3}
   m_Name: 
@@ -2682,7 +2682,7 @@ AudioSource:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1703890728}
-  m_Enabled: 0
+  m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 0}
@@ -2758,21 +2758,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   coolText: {fileID: 600466638}
   annoyingText: {fileID: 1098240775}
---- !u!54 &1703890736
-Rigidbody:
+--- !u!114 &1703890736
+MonoBehaviour:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1703890728}
-  serializedVersion: 2
-  m_Mass: 1
-  m_Drag: 0
-  m_AngularDrag: .0500000007
-  m_UseGravity: 0
-  m_IsKinematic: 1
-  m_Interpolate: 0
-  m_Constraints: 0
-  m_CollisionDetection: 0
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8976428c6ed73497c95024ab65a4476f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  velocity: {x: 0, y: 0, z: 0}
 --- !u!1 &1739088395
 GameObject:
   m_ObjectHideFlags: 0
