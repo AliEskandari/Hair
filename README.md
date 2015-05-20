@@ -22,10 +22,10 @@ Related scripts:
 The hair basically acts as a ragdoll body hanging in front of the player. The hair strand mesh was created in Blender. We added bones to the mesh and used Blenders auto weighting to assign weights to each section of the hair. In Unity, we use the Dynamic Bone asset from the Unity Asset store to move the hair realistically with the player.
 
 To do:
-Texture the hair.
-Make more varied hair meshes.
-Position the hair in a more realistic way too look like an actual head of hair.
-Reduce the hair’s jitteriness when the player moves.
+* Texture the hair.
+* Make more varied hair meshes.
+* Position the hair in a more realistic way too look like an actual head of hair.
+* Reduce the hair’s jitteriness when the player moves.
 
 ### World creator
 
@@ -40,7 +40,7 @@ The WorldCreator.cs script builds a randomly generated path of hallways from the
 The OnRailsController.cs script actually moves the players through these rooms along a path created by adding each path point from the contract above to a list. This controller also turns the player’s body when they reach a corner.
 
 To Do:
-Add new room models.
+* Add new room models.
 
 Related Scripts:
 * WorldCreator.cs
@@ -52,10 +52,10 @@ Related Scripts:
 The StudentGenerator.cs script places student objects along the path created in WorldCreator.cs. Each student gameobject contains the Student.cs script that is triggered when the player is close. Right now, the script causes the student to glow and say a random sentence (“I love your hair”).
 
 To Do:
-Only trigger one cool/annoying point per student and only trigger those points when the player is in the vicinity of the student.
-Add more student models.
-Add more student voices.
-Fix bug where students sometimes do not appear along long stretches of hallway.
+* Only trigger one cool/annoying point per student and only trigger those points when the player is in the vicinity of the student.
+* Add more student models.
+* Add more student voices.
+* Fix bug where students sometimes do not appear along long stretches of hallway.
 
 Related Scripts:
 * StudentGenerator.cs
@@ -76,7 +76,7 @@ Students sometimes do not appear along long stretches of hallway.
 Student voices sometimes stutter and repeat.
 
 ## External Resources:
-MicControl
-DynamicBone
+* MicControl
+* DynamicBone
 
 
