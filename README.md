@@ -37,6 +37,7 @@ The WorldCreator.cs script builds a randomly generated path of hallways from the
 * Points must be in order from start...end
 * First point must be placed at the room's entrance, with centered width and height
 * Last point must be placed at the room's exit, with centered width and height
+
 The OnRailsController.cs script actually moves the players through these rooms along a path created by adding each path point from the contract above to a list. This controller also turns the player’s body when they reach a corner.
 
 To Do:
