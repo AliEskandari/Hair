@@ -72,7 +72,8 @@ When previewing the game in the editor, leaving MicControl-related component act
 * MicControl
 * Audio Source
 * Speech Recognition
-* When building, however, these issues are not present so the components can be active.
+
+When building, however, these issues are not present so the components can be active.
 
 ### Students
 Students sometimes do not appear along long stretches of hallway.
