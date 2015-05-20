@@ -4,6 +4,8 @@ Hair is a video game and experience for the Oculus Rift. As a teenage girl, you 
 
 ## Components
 
+### Speech Recognition
+
 Initially, we worked on obtaining an in-game speech recognition service using Carnegie Mellon's open-sourced speech recognition package, CMUSphinx. Using PocketSphinx, a lightweight version of CMU's larger, robust speech recognition package, we would be able to the service on and off at the appropriate times during gameplay. Integrating an external C-based library into Unity became an issue and we chose to integrate a temporary, less sophisticated alternative. Using MicControl, from the Unity Asset Store, we are able to turn microphone input into a float value that represents the player's vocal intensity. This allows us to determine when the player has given a verbal response in the game (determining what they said is to be implemented later).
 
 Related scripts:
