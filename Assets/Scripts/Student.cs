@@ -7,7 +7,6 @@ public class Student : MonoBehaviour {
 	public readonly float TRIGGER_DIST = 5;
 	private AudioSource audio;
 
-
 	// Use this for initialization
 	void Start () {
 		audio = GetComponent<AudioSource>();
@@ -31,6 +30,7 @@ public class Student : MonoBehaviour {
 		}
 
 		audio.Play ();
+		(gameObject.GetComponent("Halo") as Behaviour).enabled = true;
 
 		active = true;
 	}
@@ -39,6 +39,7 @@ public class Student : MonoBehaviour {
 		if (!active) {
 			return;
 		}
+		(gameObject.GetComponent("Halo") as Behaviour).enabled = false;
 		
 		active = false;
 	}

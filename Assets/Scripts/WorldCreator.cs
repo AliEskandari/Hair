@@ -53,6 +53,7 @@ public class WorldCreator : MonoBehaviour {
 		cameraController.RoomsAdded (rooms);
 	}
 
+	bool studentsAdded = false;
 	void Update() {
 		if (gameRunner.getGameState () == GameRunner.State.menu) {
 			return;
@@ -63,7 +64,10 @@ public class WorldCreator : MonoBehaviour {
 			cameraController.startMoving();
 		}
 
-		studentGenerator.addStudents (cameraController.getPath (), cameraController.getPathToRoomIndices());
+		if (!studentsAdded) {
+			studentGenerator.addStudents (cameraController.getPath (), cameraController.getPathToRoomIndices ());
+			studentsAdded = true;
+		}
 
 		// Deactivate rooms not in view
 		int index = cameraController.GetRoomIndex ();

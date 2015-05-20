@@ -34,8 +34,10 @@ public class StudentGenerator : MonoBehaviour {
 		studentRooms = new Dictionary<int, List<int>> ();
 		for (int studentIndex = 0; studentIndex < numStudents; studentIndex ++) {
 			float studentDist = 9f + studentIndex * distance * 0.9f / numStudents;
+
 			studentLocations[studentIndex] = studentDist;
 			int room = pathToRoomIndex[path.GetIndexAtDistance(studentDist)];
+			Debug.Log("Distance: " + studentDist + " Room:" + room);
 			if (!studentRooms.ContainsKey(room)) {
 				studentRooms.Add (room, new List<int>());
 			}

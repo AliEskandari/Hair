@@ -1671,6 +1671,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 1119855991}
+  - 81: {fileID: 1119855992}
   m_Layer: 0
   m_Name: CenterEyeAnchor
   m_TagString: Untagged
@@ -1690,7 +1691,14 @@ Transform:
   m_Children: []
   m_Father: {fileID: 43393361}
   m_RootOrder: 1
---- !u!1 &1141751154 stripped
+--- !u!81 &1119855992
+AudioListener:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1119855990}
+  m_Enabled: 1
+--- !u!1 &1141751154
 GameObject:
   m_PrefabParentObject: {fileID: 124666, guid: 7be43772310c340e598666760c862efa, type: 2}
   m_PrefabInternal: {fileID: 1151014513}

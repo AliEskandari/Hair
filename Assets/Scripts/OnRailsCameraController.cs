@@ -91,4 +91,5 @@ public class OnRailsCameraController : MonoBehaviour {
 	public void startMoving() {
 		speed = MAX_SPEED;
 	}
+	
 }

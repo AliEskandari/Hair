@@ -12,6 +12,7 @@ GameObject:
   - 114: {fileID: 11492114}
   - 82: {fileID: 8252028}
   - 114: {fileID: 11423024}
+  - 122: {fileID: 12219426}
   m_Layer: 0
   m_Name: scotdidi
   m_TagString: Untagged
@@ -122,6 +123,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fea151cadf1174ca7afe73573077dc01, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!122 &12219426
+Halo:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 137388}
+  m_Enabled: 0
+  m_Color:
+    serializedVersion: 2
+    rgba: 4278255379
+  m_Size: 1
 --- !u!212 &21212088
 SpriteRenderer:
   m_ObjectHideFlags: 1
