@@ -7,6 +7,7 @@ public class GameRunner : MonoBehaviour {
 	public GameObject cameraRig;
 	public GameObject body;
 	public OnRailsCameraController railsController;
+	public GameObject scoreText;
 
 	private GameObject[] hairs;
 
@@ -55,6 +56,7 @@ public class GameRunner : MonoBehaviour {
 			body.transform.RotateAround(body.transform.position, body.transform.up, deltaRotation);
 
 			if (startRotation >= 180) {
+				scoreText.SetActive(true);
 				gamestate = State.playing;
 			}
 		}

@@ -28,6 +28,6 @@ public class PlayerController : MonoBehaviour {
 
 	public void talked() {
 		annoying++;
-		annoyingText.text = "annoying" + annoying.ToString ();
+		annoyingText.text = "annoying=" + annoying.ToString ();
 	}
 }
